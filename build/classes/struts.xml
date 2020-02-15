@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />  
+    <package name="registration" extends="struts-default" namespace="/">
+    
+          <action name="userData" class="com.lk.action.UserDataAction" >
+            <result name="list">list.jsp</result>
+          	<result name="goAdd">add.jsp</result>
+          	<result name="success">success.jsp</result>
+          	<result name="delete">success.jsp</result>
+        </action> 
+            
+    	<action name="login_*" class="com.lk.action.LoginAction" method="{1}">
+            <result name="input" >/WEB-INF/JSP/login.jsp</result>
+            <result type="chain">main</result>
+            <result name="SUCCESS" >home_page.jsp</result>
+        </action>
+        
+        <action name="main" class="com.lk.action.Main">
+            <result>/WEB-INF/JSP/home_page.jsp</result>
+        </action>
+       
+       <action name="login" class="com.lk.action.LoginAction" >
+            <result name="SUCCESS" >home_page.jsp</result>
+        </action>
+    </package>
+    
+</struts>
